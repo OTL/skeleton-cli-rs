@@ -1,0 +1,8 @@
+name: <app_name>
+version: "0.1.0"
+author: <author> <<email>>
+args:
+    - verbose:
+        short: v
+        multiple: true
+        help: Sets the level of verbosity

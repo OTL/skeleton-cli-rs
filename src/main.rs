@@ -5,8 +5,10 @@ extern crate clap;
 #[macro_use]
 extern crate error_chain;
 
-use clap::App;
+mod app;
+
 use std::env;
+use app::App;
 use errors::*;
 
 /// Representation of library errors
@@ -34,7 +36,10 @@ fn main() {
 
 fn run() -> Result<()> {
     let yaml = load_yaml!("cli.yml");
-    let matches = App::from_yaml(yaml).get_matches();
+    let matches = clap::App::from_yaml(yaml).get_matches();
+
+    let cli_app = App;
+    cli_app.run_command(&matches)?;
 
     Ok(())
 }
