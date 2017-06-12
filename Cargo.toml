@@ -1,6 +1,10 @@
 [package]
-name = "skelton"
+name = "app_name"
 version = "0.1.0"
-authors = ["Guillem Nieto <guillem.nieto@socialpoint.es>"]
+authors = ["<author> <email>"]
 
 [dependencies]
+clap = "^2.0"
+error-chain = "^0.1"
+log = "^0.3"
+env_logger = "^0.4"
