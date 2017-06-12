@@ -4,7 +4,7 @@ use errors::*;
 use clap::ArgMatches;
 
 impl App {
-    pub fn run_command(&self, matches: &ArgMatches) -> Result<()> {
+    pub fn run_command(&self, _: &ArgMatches) -> Result<()> {
         Ok(())
     }
 }

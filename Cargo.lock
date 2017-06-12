@@ -3,6 +3,7 @@ name = "app_name"
 version = "0.1.0"
 dependencies = [
  "clap 2.24.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "colored 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "env_logger 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "error-chain 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -81,6 +82,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "colored"
+version = "1.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "lazy_static 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "dbghelp-sys"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -119,6 +128,11 @@ dependencies = [
  "winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "winapi-build 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "lazy_static"
+version = "0.2.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "libc"
@@ -250,11 +264,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum bitflags 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)" = "1370e9fc2a6ae53aea8b7a5110edbd08836ed87c88736dfabccade1c2b44bff4"
 "checksum cfg-if 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "d0c47d456a36ebf0536a6705c83c1cbbcb9255fbc1d905a6ded104f479268a29"
 "checksum clap 2.24.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6b8f69e518f967224e628896b54e41ff6acfb4dcfefc5076325c36525dac900f"
+"checksum colored 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "66e436adfcba3a50905f943d990f5ef7c230ebe2d9476ab5c7dc2427afe357ee"
 "checksum dbghelp-sys 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "97590ba53bcb8ac28279161ca943a924d1fd4a8fb3fa63302591647c4fc5b850"
 "checksum env_logger 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)" = "3ddf21e73e016298f5cb37d6ef8e8da8e39f91f9ec8b0df44b7deb16a9f8cd5b"
 "checksum error-chain 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d9435d864e017c3c6afeac1654189b06cdb491cf2ff73dbf0d73b0f292f42ff8"
 "checksum gcc 0.3.50 (registry+https://github.com/rust-lang/crates.io-index)" = "5f837c392f2ea61cb1576eac188653df828c861b7137d74ea4a5caa89621f9e6"
 "checksum kernel32-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
+"checksum lazy_static 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "3b37545ab726dd833ec6420aaba8231c5b320814b9029ad585555d2a03e94fbf"
 "checksum libc 0.2.23 (registry+https://github.com/rust-lang/crates.io-index)" = "e7eb6b826bfc1fdea7935d46556250d1799b7fe2d9f7951071f4291710665e3e"
 "checksum log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)" = "880f77541efa6e5cc74e76910c9884d9859683118839d6a1dc3b11e63512565b"
 "checksum memchr 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "1dbccc0e46f1ea47b9f17e6d67c5a96bd27030519c519c9c91327e31275a47b4"

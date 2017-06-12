@@ -4,12 +4,16 @@ extern crate env_logger;
 extern crate clap;
 #[macro_use]
 extern crate error_chain;
+extern crate colored;
 
 mod app;
 
 use std::env;
 use app::App;
 use errors::*;
+use log::{LogRecord, LogLevel};
+use env_logger::LogBuilder;
+use colored::Colorize;
 
 /// Representation of library errors
 pub mod errors {
@@ -17,7 +21,7 @@ pub mod errors {
 }
 
 fn main() {
-    env_logger::init().unwrap();
+    initialize_logger();
 
     if let Err(ref e) = run() {
         println!("error: {}", e);
@@ -42,4 +46,28 @@ fn run() -> Result<()> {
     cli_app.run_command(&matches)?;
 
     Ok(())
+}
+
+fn initialize_logger() {
+    let format = |record: &LogRecord| match record.level() {
+        LogLevel::Warn => {
+            format!("WARN: {}", record.args().to_string().yellow())
+        }
+        LogLevel::Error => {
+            format!("ERR: {}", record.args().to_string().red())
+        }
+        LogLevel::Debug => format!("DEBUG: {}", record.args().to_string().bold()),
+        _ => format!("{}: {}", record.level(), record.args()),
+    };
+    let mut builder = LogBuilder::new();
+
+    let builder_state = if let Ok(env_log) = env::var("RUST_LOG") {
+        builder.format(format).parse(&env_log).init()
+    } else {
+        builder.format(format).init()
+    };
+
+    if let Err(e) = builder_state {
+        println!("Could not initialize logger: {}", e);
+    }
 }
