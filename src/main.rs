@@ -1,9 +1,7 @@
-extern crate log;
+#[macro_use] extern crate log;
 extern crate env_logger;
-#[macro_use]
-extern crate clap;
-#[macro_use]
-extern crate error_chain;
+#[macro_use] extern crate clap;
+#[macro_use] extern crate error_chain;
 extern crate colored;
 
 mod app;
@@ -51,12 +49,15 @@ fn run() -> Result<()> {
 fn initialize_logger() {
     let format = |record: &LogRecord| match record.level() {
         LogLevel::Warn => {
-            format!("WARN: {}", record.args().to_string().yellow())
+            format!("{} {}", "WARN:".bold().yellow() , record.args().to_string().yellow())
         }
         LogLevel::Error => {
-            format!("ERR: {}", record.args().to_string().red())
+            format!("{} {}", "ERR:".bold().red(), record.args().to_string().red())
         }
-        LogLevel::Debug => format!("DEBUG: {}", record.args().to_string().bold()),
+        LogLevel::Info => {
+            format!("{} {}", "ERR:".bold().green(), record.args().to_string().green())
+        }
+        LogLevel::Debug => format!("{} {}", "DEBUG:".bold(), record.args().to_string().bold()),
         _ => format!("{}: {}", record.level(), record.args()),
     };
     let mut builder = LogBuilder::new();
