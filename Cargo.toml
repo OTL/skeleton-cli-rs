@@ -5,6 +5,6 @@ authors = ["<author> <email>"]
 
 [dependencies]
 clap = {version = "^2.0", features=["yaml"]}
-error-chain = "^0.1"
+error-chain = "^0.10"
 log = "^0.3"
 env_logger = "^0.4"

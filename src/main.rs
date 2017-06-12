@@ -1,9 +1,18 @@
-extern crate error_chain;
 extern crate log;
 extern crate env_logger;
+#[macro_use]
 extern crate clap;
+#[macro_use]
+extern crate error_chain;
 
+use clap::App;
 use std::env;
+use errors::*;
+
+/// Representation of library errors
+pub mod errors {
+    error_chain!{}
+}
 
 fn main() {
     env_logger::init().unwrap();
@@ -24,5 +33,8 @@ fn main() {
 }
 
 fn run() -> Result<()> {
+    let yaml = load_yaml!("cli.yml");
+    let matches = App::from_yaml(yaml).get_matches();
+
     Ok(())
 }
